@@ -22,4 +22,10 @@ class ArgoCDServiceTest {
         String reposotiryList = argoCDService.getApplicationList();
         System.out.println(reposotiryList);
     }
+
+    @Test
+    void getApplicationResourceTree() {
+        String reposotiryList = argoCDService.getApplicationResourceTree("nginx");
+        System.out.println(reposotiryList);
+    }
 }

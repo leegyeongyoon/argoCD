@@ -32,4 +32,12 @@ public class ArgoCDService {
         System.out.println(response.getBody().toString());
         return response.getBody().toString();
     }
+    public String getApplicationResourceTree(String applicationName){
+        ResponseEntity<Map<String, Object>> response = argoCDFeignClient.selectApplicationResourceTree(applicationName);
+        if(response == null) {
+            return "false";
+        }
+        System.out.println(response.getBody().toString());
+        return response.getBody().toString();
+    }
 }
