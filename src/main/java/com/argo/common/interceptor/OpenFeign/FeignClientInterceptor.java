@@ -42,7 +42,6 @@ public class FeignClientInterceptor implements RequestInterceptor {
                     .build();
 
             ArgoCDAuth.ArgoCDAuthDto argoCDAuthDto = restTemplate.postForObject(argoCDUrl + "/api/v1/session", argoCDAuthVo, ArgoCDAuth.ArgoCDAuthDto.class);
-            System.out.println(argoCDAuthDto.toString());
 
             if (argoCDAuthDto != null)
                 requestTemplate.header(HttpHeaders.AUTHORIZATION, "Bearer " + argoCDAuthDto.getToken());
