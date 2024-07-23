@@ -8,10 +8,11 @@ import java.util.Map;
 
 @Getter
 @Setter
-public class ArgoCdApplicationDto {
+public class ArgoCdApplicationResponseVo {
     private Metadata metadata;
     private Spec spec;
     private Status status;
+    private List<ArgoCdApplicationResponseVo> items;
 
     @Getter
     @Setter
@@ -58,17 +59,11 @@ public class ArgoCdApplicationDto {
             @Getter
             @Setter
             public static class SpecFields {
-                private Destination destination;
+                private Spec.Destination destination;
                 private String project;
                 private Source source;
                 private SyncPolicy syncPolicy;
 
-                @Getter
-                @Setter
-                public static class Destination {
-                    private String name;
-                    private String namespace;
-                }
 
                 @Getter
                 @Setter
@@ -234,6 +229,7 @@ public class ArgoCdApplicationDto {
         public static class Destination {
             private String namespace;
             private String name;
+            private String server;
         }
 
         @Getter

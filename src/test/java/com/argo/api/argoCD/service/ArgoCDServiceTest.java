@@ -1,7 +1,8 @@
 package com.argo.api.argoCD.service;
 
-import com.argo.api.argoCD.dto.ArgoCDTreeNodeResponseVo;
 import com.argo.api.argoCD.dto.ArgoCDTreeVo;
+import com.argo.api.argoCD.dto.ArgoCdApplicationResponseVo;
+import com.argo.api.argoCD.dto.ArgoCdApplicationVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,13 +22,13 @@ class ArgoCDServiceTest {
 
     @Test
     void getApplicationList() {
-        String reposotiryList = argoCDService.getApplicationList();
+        List<ArgoCdApplicationVo> reposotiryList = argoCDService.getApplicationList();
         System.out.println(reposotiryList);
     }
 
     @Test
     void getApplication() {
-        String reposotiryList = argoCDService.getApplication("nginx");
+        ArgoCdApplicationResponseVo reposotiryList = argoCDService.getApplication("nginx");
         System.out.println(reposotiryList);
     }
 

@@ -1,6 +1,7 @@
 package com.argo.api.argoCD.controller;
 
 import com.argo.api.argoCD.dto.ArgoCDTreeVo;
+import com.argo.api.argoCD.dto.ArgoCdApplicationVo;
 import com.argo.api.argoCD.service.ArgoCDService;
 import com.argo.common.model.ResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,14 @@ public class ArgoCDController {
     public ResponseDto<String> getRepositoryList(){
         return ResponseDto.<String>builder()
                 .data(argoCDService.getReposotiryList())
+                .build();
+    }
+
+    @CrossOrigin("*")
+    @GetMapping("/applications")
+    public ResponseDto<List<ArgoCdApplicationVo>> getApplicationList(){
+        return ResponseDto.<List<ArgoCdApplicationVo>>builder()
+                .data(argoCDService.getApplicationList())
                 .build();
     }
     @CrossOrigin("*")
