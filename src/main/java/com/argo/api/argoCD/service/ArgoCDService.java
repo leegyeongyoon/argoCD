@@ -60,7 +60,6 @@ public class ArgoCDService {
 
     public List<ArgoCDTreeVo> getApplicationResourceTree(String applicationName) {
         ArgoCDTreeNodeResponseVo argoCDTreeNodeResponseVo = argoCDFeignClient.selectApplicationResourceTree(applicationName);
-        ArgoCdApplicationResponseVo argoCdApplicationResponseVo = argoCDFeignClient.selectApplication(applicationName);
         return ArgoCDTreeVo.createTree(argoCDTreeNodeResponseVo);
     }
 }

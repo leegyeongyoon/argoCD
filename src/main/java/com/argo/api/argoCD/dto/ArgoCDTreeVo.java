@@ -26,6 +26,7 @@ public class ArgoCDTreeVo {
         private String name;
         private String kind;
         private String createdDate;
+        private String revision;
     }
 
     private static ArgoCDTreeVo createNode(ArgoCDTreeNodeResponseVo.Node node) {
@@ -33,9 +34,20 @@ public class ArgoCDTreeVo {
                 .status(Objects.nonNull(node.getHealth()) ? node.getHealth().getStatus() : "")
                 .kind(node.getKind())
                 .name(node.getName())
+                .revision(getRevisionValue(node))
                 .createdDate(node.getCreatedAt()).build();
         return new ArgoCDTreeVo(node.getUid(), argoCDTreeNodeValue, new ArrayList<>());
 
+    }
+
+    private static String getRevisionValue(ArgoCDTreeNodeResponseVo.Node node) {
+        return Optional.ofNullable(node.getInfo())
+                .orElseGet(ArrayList::new)
+                .stream()
+                .filter(info -> "Revision".equals(info.getName()))
+                .map(ArgoCDTreeNodeResponseVo.Info::getValue)
+                .findFirst()
+                .orElse("");
     }
 
 
