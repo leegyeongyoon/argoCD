@@ -1,6 +1,7 @@
 package com.argo.api.argoCD.controller;
 
 import com.argo.api.argoCD.dto.ArgoCDTreeVo;
+import com.argo.api.argoCD.dto.ArgoCdApplicationResponseVo;
 import com.argo.api.argoCD.dto.ArgoCdApplicationVo;
 import com.argo.api.argoCD.service.ArgoCDService;
 import com.argo.common.model.ResponseDto;
@@ -31,6 +32,15 @@ public class ArgoCDController {
                 .data(argoCDService.getApplicationList())
                 .build();
     }
+
+    @CrossOrigin("*")
+    @GetMapping("/application/{serviceName}")
+    public ResponseDto<ArgoCdApplicationResponseVo> getApplicationList(@PathVariable String serviceName){
+        return ResponseDto.<ArgoCdApplicationResponseVo>builder()
+                .data(argoCDService.getApplication(serviceName))
+                .build();
+    }
+
     @CrossOrigin("*")
     @GetMapping("/resource-tree/{serviceName}")
     public ResponseDto<List<ArgoCDTreeVo>> getResourceTree(@PathVariable String serviceName){

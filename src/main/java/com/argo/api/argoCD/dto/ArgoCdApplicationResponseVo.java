@@ -129,7 +129,6 @@ public class ArgoCdApplicationResponseVo {
                     public static class Operation {
                         private Sync sync;
                         private InitiatedBy initiatedBy;
-                        private Retry retry;
 
                         @Getter
                         @Setter
@@ -145,6 +144,7 @@ public class ArgoCdApplicationResponseVo {
                                 @Getter
                                 @Setter
                                 public static class Hook {
+                                    private Boolean force;
                                 }
                             }
                         }
@@ -153,11 +153,6 @@ public class ArgoCdApplicationResponseVo {
                         @Setter
                         public static class InitiatedBy {
                             private String username;
-                        }
-
-                        @Getter
-                        @Setter
-                        public static class Retry {
                         }
                     }
 
@@ -320,7 +315,6 @@ public class ArgoCdApplicationResponseVo {
             public static class Operation {
                 private Sync sync;
                 private InitiatedBy initiatedBy;
-                private Retry retry;
 
                 @Getter
                 @Setter
@@ -336,6 +330,7 @@ public class ArgoCdApplicationResponseVo {
                         @Getter
                         @Setter
                         public static class Hook {
+                            private Boolean force;
                         }
                     }
                 }
@@ -346,10 +341,7 @@ public class ArgoCdApplicationResponseVo {
                     private String username;
                 }
 
-                @Getter
-                @Setter
-                public static class Retry {
-                }
+
             }
 
             @Getter
