@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class ArgoCDTreeVo {
     private String name;
     private ArgoCDNode value;
+    private String createdDate;
     private List<ArgoCDTreeVo> children;
 
     public void addChild(ArgoCDTreeVo argoCDTreeVo) {
@@ -25,7 +26,6 @@ public class ArgoCDTreeVo {
         private String status;
         private String name;
         private String kind;
-        private String createdDate;
         private String revision;
     }
 
@@ -34,9 +34,8 @@ public class ArgoCDTreeVo {
                 .status(Objects.nonNull(node.getHealth()) ? node.getHealth().getStatus() : "")
                 .kind(node.getKind())
                 .name(node.getName())
-                .revision(getRevisionValue(node))
-                .createdDate(node.getCreatedAt()).build();
-        return new ArgoCDTreeVo(node.getUid(), argoCDTreeNodeValue, new ArrayList<>());
+                .revision(getRevisionValue(node)).build();
+        return new ArgoCDTreeVo(node.getUid(), argoCDTreeNodeValue, node.getCreatedAt(), new ArrayList<>());
 
     }
 
