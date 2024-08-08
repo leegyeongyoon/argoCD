@@ -34,6 +34,10 @@ dependencies {
     implementation group: 'io.github.openfeign', name: 'feign-gson', version: '9.4.0'
     implementation group: 'io.github.openfeign', name: 'feign-core', version: '11.9.1'
     implementation("org.zalando:problem-spring-web-starter:0.27.0")
+    implementation group: 'org.apache.httpcomponents.client5', name: 'httpclient5', version: '5.3.1'
+    implementation 'io.github.openfeign:feign-httpclient:11.10'
+
+
 
 
     compileOnly 'org.projectlombok:lombok'

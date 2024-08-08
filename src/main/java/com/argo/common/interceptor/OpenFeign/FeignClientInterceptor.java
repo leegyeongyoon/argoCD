@@ -1,6 +1,7 @@
 package com.argo.common.interceptor.OpenFeign;
 
 import com.argo.api.argoCD.dto.ArgoCDAuth;
+import com.argo.common.config.argoCD.FeignSSLConfig;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ public class FeignClientInterceptor implements RequestInterceptor {
     public FeignClientInterceptor(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
+
 
     @Override
     public void apply(RequestTemplate requestTemplate) {

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
 
-@FeignClient(name = "argoCD-feign", url = "${argoCD.url}", configuration = FeignConfig.class)
+@FeignClient(name = "argoCD-feign", url = "${argoCD.url}", configuration = {FeignConfig.class, FeignSSLConfig.class})
 public interface ArgoCDFeignClient {
 
     /**
