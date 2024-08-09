@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 class ArgoCDServiceTest {
@@ -36,6 +37,12 @@ class ArgoCDServiceTest {
     @Test
     void getApplicationResourceTree() {
         List<ArgoCDTreeVo> applicationResourceTree = argoCDService.getApplicationResourceTree("nginx");
+        System.out.println(applicationResourceTree);
+    }
+
+    @Test
+    void getApplicationManagedResource() {
+        Map<String, Object> applicationResourceTree = argoCDService.getApplicationManagedResource("dev-plot-admin-api","Deployment");
         System.out.println(applicationResourceTree);
     }
 }

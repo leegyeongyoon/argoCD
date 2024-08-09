@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
@@ -26,4 +27,7 @@ public interface ArgoCDFeignClient {
 
     @GetMapping(value = "/api/v1/applications/{applicationName}/resource-tree", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ArgoCDTreeNodeResponseVo selectApplicationResourceTree(@PathVariable String applicationName);
+
+    @GetMapping(value = "/api/v1/applications/{applicationName}/managed-resources", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    Map<String, Object> selectApplicationManagedResource(@PathVariable String applicationName, @RequestParam String kind);
 }

@@ -62,4 +62,10 @@ public class ArgoCDService {
         ArgoCDTreeNodeResponseVo argoCDTreeNodeResponseVo = argoCDFeignClient.selectApplicationResourceTree(applicationName);
         return ArgoCDTreeVo.createTree(argoCDTreeNodeResponseVo);
     }
+
+    public Map<String, Object> getApplicationManagedResource(String applicationName, String kind) {
+        Map<String, Object> argoCDTreeNodeResponseVo = argoCDFeignClient.selectApplicationManagedResource(applicationName,kind);
+        System.out.println("argoCDTreeNodeResponseVo = " + argoCDTreeNodeResponseVo);
+        return argoCDTreeNodeResponseVo;
+    }
 }

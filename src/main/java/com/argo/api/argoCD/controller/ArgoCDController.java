@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -46,6 +47,14 @@ public class ArgoCDController {
     public ResponseDto<List<ArgoCDTreeVo>> getResourceTree(@PathVariable String serviceName){
         return ResponseDto.<List<ArgoCDTreeVo>>builder()
                 .data(argoCDService.getApplicationResourceTree(serviceName))
+                .build();
+    }
+
+    @CrossOrigin("*")
+    @GetMapping("/managed-resources/{serviceName}")
+    public ResponseDto<Map<String,Object>> getManagedResource(@PathVariable String serviceName, @RequestParam String kind){
+        return ResponseDto.<Map<String,Object>>builder()
+                .data(argoCDService.getApplicationManagedResource(serviceName,kind))
                 .build();
     }
 }
