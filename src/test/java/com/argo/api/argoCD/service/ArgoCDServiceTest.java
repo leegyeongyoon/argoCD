@@ -29,7 +29,7 @@ class ArgoCDServiceTest {
 
     @Test
     void getApplication() {
-        ArgoCdApplicationResponseVo reposotiryList = argoCDService.getApplication("nginx");
+        ArgoCdApplicationResponseVo reposotiryList = argoCDService.getApplication("dev-plot-admin-api");
         System.out.println(reposotiryList);
     }
 

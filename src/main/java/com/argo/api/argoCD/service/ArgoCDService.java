@@ -34,21 +34,7 @@ public class ArgoCDService {
         if (Objects.isNull(argoCdApplicationResponseVoList.getItems())) {
             return new ArrayList<>();
         }
-        return argoCdApplicationResponseVoList.getItems().stream().map(argoCdApplicationResponseVo ->
-                ArgoCdApplicationVo.builder()
-                        .applicationName(argoCdApplicationResponseVo.getMetadata().getName())
-                        .projectName(argoCdApplicationResponseVo.getSpec().getProject())
-                        .sync(argoCdApplicationResponseVo.getStatus().getSync().getStatus())
-                        .health(argoCdApplicationResponseVo.getStatus().getHealth().getStatus())
-                        .namespace(argoCdApplicationResponseVo.getMetadata().getNamespace())
-                        .repositoryUrl(argoCdApplicationResponseVo.getSpec().getSource().getRepoURL())
-                        .path(argoCdApplicationResponseVo.getSpec().getSource().getPath())
-                        .targetRevision(argoCdApplicationResponseVo.getSpec().getSource().getTargetRevision())
-                        .destination(Objects.nonNull(argoCdApplicationResponseVo.getSpec().getDestination().getServer()) ? argoCdApplicationResponseVo.getSpec().getDestination().getServer() : argoCdApplicationResponseVo.getSpec().getDestination().getName())
-                        .createdAt(argoCdApplicationResponseVo.getMetadata().getCreationTimestamp())
-                        .lastSyncAt(argoCdApplicationResponseVo.getStatus().getReconciledAt())
-                        .build()
-        ).toList();
+        return argoCdApplicationResponseVoList.getItems().stream().map(ArgoCdApplicationVo::setApplicationVo).toList();
     }
 
     public ArgoCdApplicationResponseVo getApplication(String applicationName) {
@@ -64,8 +50,14 @@ public class ArgoCDService {
     }
 
     public Map<String, Object> getApplicationManagedResource(String applicationName, String kind) {
-        Map<String, Object> argoCDTreeNodeResponseVo = argoCDFeignClient.selectApplicationManagedResource(applicationName,kind);
+        Map<String, Object> argoCDTreeNodeResponseVo = argoCDFeignClient.selectApplicationManagedResource(applicationName, kind);
         System.out.println("argoCDTreeNodeResponseVo = " + argoCDTreeNodeResponseVo);
         return argoCDTreeNodeResponseVo;
+    }
+
+    public ArgoCdApplicationVo getApplicationDetailSummary(String applicationName) {
+        ArgoCdApplicationResponseVo argoCdApplicationResponseVo = argoCDFeignClient.selectApplication(applicationName);
+        System.out.println("argoCDTreeNodeResponseVo = " + argoCdApplicationResponseVo);
+        return ArgoCdApplicationVo.setApplicationVo(argoCdApplicationResponseVo);
     }
 }

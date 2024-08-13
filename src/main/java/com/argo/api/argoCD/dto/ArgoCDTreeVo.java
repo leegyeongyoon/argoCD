@@ -35,7 +35,6 @@ public class ArgoCDTreeVo {
                 .kind(node.getKind())
                 .name(node.getName())
                 .revision(getRevisionValue(node)).build();
-        System.out.println("node.getCreatedAt() = " + node.getCreatedAt());
         return new ArgoCDTreeVo(node.getUid(), argoCDTreeNodeValue, node.getCreatedAt(), new ArrayList<>());
 
     }
