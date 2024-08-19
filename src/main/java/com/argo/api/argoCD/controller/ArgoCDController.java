@@ -3,6 +3,7 @@ package com.argo.api.argoCD.controller;
 import com.argo.api.argoCD.dto.ArgoCDTreeVo;
 import com.argo.api.argoCD.dto.ArgoCdApplicationResponseVo;
 import com.argo.api.argoCD.dto.ArgoCdApplicationVo;
+import com.argo.api.argoCD.dto.ArgoCdManagedResourceVo;
 import com.argo.api.argoCD.service.ArgoCDService;
 import com.argo.common.model.ResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class ArgoCDController {
 
     @CrossOrigin("*")
     @GetMapping("/repository/list")
-    public ResponseDto<String> getRepositoryList(){
+    public ResponseDto<String> getRepositoryList() {
         return ResponseDto.<String>builder()
                 .data(argoCDService.getReposotiryList())
                 .build();
@@ -28,7 +29,7 @@ public class ArgoCDController {
 
     @CrossOrigin("*")
     @GetMapping("/applications")
-    public ResponseDto<List<ArgoCdApplicationVo>> getApplicationList(){
+    public ResponseDto<List<ArgoCdApplicationVo>> getApplicationList() {
         return ResponseDto.<List<ArgoCdApplicationVo>>builder()
                 .data(argoCDService.getApplicationList())
                 .build();
@@ -36,7 +37,7 @@ public class ArgoCDController {
 
     @CrossOrigin("*")
     @GetMapping("/application/{serviceName}")
-    public ResponseDto<ArgoCdApplicationResponseVo> getApplicationList(@PathVariable String serviceName){
+    public ResponseDto<ArgoCdApplicationResponseVo> getApplicationList(@PathVariable String serviceName) {
         return ResponseDto.<ArgoCdApplicationResponseVo>builder()
                 .data(argoCDService.getApplication(serviceName))
                 .build();
@@ -44,7 +45,7 @@ public class ArgoCDController {
 
     @CrossOrigin("*")
     @GetMapping("/resource-tree/{serviceName}")
-    public ResponseDto<List<ArgoCDTreeVo>> getResourceTree(@PathVariable String serviceName){
+    public ResponseDto<List<ArgoCDTreeVo>> getResourceTree(@PathVariable String serviceName) {
         return ResponseDto.<List<ArgoCDTreeVo>>builder()
                 .data(argoCDService.getApplicationResourceTree(serviceName))
                 .build();
@@ -52,9 +53,17 @@ public class ArgoCDController {
 
     @CrossOrigin("*")
     @GetMapping("/managed-resources/{serviceName}")
-    public ResponseDto<Map<String,Object>> getManagedResource(@PathVariable String serviceName, @RequestParam String kind){
-        return ResponseDto.<Map<String,Object>>builder()
-                .data(argoCDService.getApplicationManagedResource(serviceName,kind))
+    public ResponseDto<ArgoCdManagedResourceVo> getManagedResource(@PathVariable String serviceName, @RequestParam String kind) {
+        return ResponseDto.<ArgoCdManagedResourceVo>builder()
+                .data(argoCDService.getApplicationManagedResource(serviceName, kind))
                 .build();
     }
+    @CrossOrigin("*")
+    @GetMapping("/test")
+    public ResponseDto<String> getManagedResource1() {
+        return ResponseDto.<String>builder()
+                .data(argoCDService.getAppdetails())
+                .build();
+    }
+
 }

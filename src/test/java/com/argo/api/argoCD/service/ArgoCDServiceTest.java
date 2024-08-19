@@ -3,10 +3,12 @@ package com.argo.api.argoCD.service;
 import com.argo.api.argoCD.dto.ArgoCDTreeVo;
 import com.argo.api.argoCD.dto.ArgoCdApplicationResponseVo;
 import com.argo.api.argoCD.dto.ArgoCdApplicationVo;
+import com.argo.api.argoCD.dto.ArgoCdManagedResourceVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +44,13 @@ class ArgoCDServiceTest {
 
     @Test
     void getApplicationManagedResource() {
-        Map<String, Object> applicationResourceTree = argoCDService.getApplicationManagedResource("dev-plot-admin-api","Deployment");
+        ArgoCdManagedResourceVo applicationResourceTree = argoCDService.getApplicationManagedResource("dev-plot-admin-api","Deployment");
+        System.out.println(applicationResourceTree);
+    }
+
+    @Test
+    void getAppdetails()  {
+        String applicationResourceTree = argoCDService.getAppdetails();
         System.out.println(applicationResourceTree);
     }
 }
