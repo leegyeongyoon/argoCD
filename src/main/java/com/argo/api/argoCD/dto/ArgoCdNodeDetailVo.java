@@ -12,11 +12,13 @@ import java.util.Objects;
 public class ArgoCdNodeDetailVo {
     private ArgoCdApplicationVo argoCdApplicationVo;
     private ArgoCdManagedResourceVo argoCdManagedResourceVo;
+    private ArgoCDAppDetailsResponseVo argoCDAppDetailsResponseVo;
 
-    public static ArgoCdNodeDetailVo setNodeDetailVo(ArgoCdApplicationVo argoCdApplicationVo, ArgoCdManagedResourceVo argoCdManagedResourceVo) {
+    public static ArgoCdNodeDetailVo setNodeDetailVo(ArgoCdApplicationVo argoCdApplicationVo, ArgoCdManagedResourceVo argoCdManagedResourceVo, ArgoCDAppDetailsResponseVo argoCDAppDetailsResponseVo) {
         return ArgoCdNodeDetailVo.builder()
                 .argoCdApplicationVo(argoCdApplicationVo)
                 .argoCdManagedResourceVo(argoCdManagedResourceVo)
+                .argoCDAppDetailsResponseVo(argoCDAppDetailsResponseVo)
                 .build();
     }
 }

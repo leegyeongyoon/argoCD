@@ -1,14 +1,12 @@
 package com.argo.api.argoCD.service;
 
-import com.argo.api.argoCD.dto.ArgoCDTreeVo;
-import com.argo.api.argoCD.dto.ArgoCdApplicationResponseVo;
-import com.argo.api.argoCD.dto.ArgoCdApplicationVo;
-import com.argo.api.argoCD.dto.ArgoCdManagedResourceVo;
+import com.argo.api.argoCD.dto.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 
@@ -49,8 +47,9 @@ class ArgoCDServiceTest {
     }
 
     @Test
-    void getAppdetails()  {
-        String applicationResourceTree = argoCDService.getAppdetails();
+    void getAppdetails() {
+        ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo = new ArgoCDAppDetailsRequestBodyVo(new ArgoCDAppDetailsRequestBodyVo.Source("https://github.com/leegyeongyoon/plotting-gitops.git", "dev/charts/plot-admin-api", "main"), "dev-plot-admin-api", "default");
+        ArgoCDAppDetailsResponseVo applicationResourceTree = argoCDService.getAppdetails(argoCDAppDetailsRequestBodyVo);
         System.out.println(applicationResourceTree);
     }
 }

@@ -1,17 +1,13 @@
 package com.argo.common.config.argoCD;
 
-import com.argo.api.argoCD.dto.ArgoCDTreeNodeResponseVo;
-import com.argo.api.argoCD.dto.ArgoCdApplicationResponseVo;
-import com.argo.api.argoCD.dto.ArgoCdManagedResourceVo;
+import com.argo.api.argoCD.dto.*;
 import feign.Param;
 import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URL;
 import java.util.Map;
 
 @FeignClient(name = "argoCD-feign", url = "${argoCD.url}", configuration = {FeignConfig.class, FeignSSLConfig.class})
@@ -35,7 +31,7 @@ public interface ArgoCDFeignClient {
     @GetMapping(value = "/api/v1/applications/{applicationName}/managed-resources", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ArgoCdManagedResourceVo selectApplicationManagedResource(@PathVariable String applicationName, @RequestParam String kind);
 
-    @PostMapping("/repositories/{repoURL:.+}/appdetails")
-    String selectApplicationRepository(@PathVariable("repoURL") String repoURL);
+    @PostMapping(value = "/api/v1/repositories/{repoURL:.+}/appdetails", produces = MediaType.APPLICATION_JSON_VALUE)
+    ArgoCDAppDetailsResponseVo selectApplicationRepository(@PathVariable String repoURL, @RequestBody ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo);
 
 }

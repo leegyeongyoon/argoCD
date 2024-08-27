@@ -1,7 +1,6 @@
 package com.argo.common.config.argoCD;
 
 import feign.Logger;
-import feign.RequestInterceptor;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
@@ -27,16 +26,6 @@ public class FeignConfig {
     @Bean
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
-    }
-    @Bean
-    public RequestInterceptor requestInterceptor() {
-        return requestTemplate -> {
-            // 필요한 인코딩 처리를 여기에 추가
-            String url = requestTemplate.url();
-            // 예를 들어, URL의 콜론을 인코딩할 수 있습니다.
-            url = url.replace("/", "%2F");
-            requestTemplate.uri(url);
-        };
     }
 
     @Bean

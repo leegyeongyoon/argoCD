@@ -1,14 +1,13 @@
 package com.argo.api.argoCD.controller;
 
-import com.argo.api.argoCD.dto.ArgoCDTreeVo;
-import com.argo.api.argoCD.dto.ArgoCdApplicationResponseVo;
-import com.argo.api.argoCD.dto.ArgoCdApplicationVo;
-import com.argo.api.argoCD.dto.ArgoCdManagedResourceVo;
+import com.argo.api.argoCD.dto.*;
 import com.argo.api.argoCD.service.ArgoCDService;
 import com.argo.common.model.ResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 
@@ -59,10 +58,10 @@ public class ArgoCDController {
                 .build();
     }
     @CrossOrigin("*")
-    @GetMapping("/test")
-    public ResponseDto<String> getManagedResource1() {
-        return ResponseDto.<String>builder()
-                .data(argoCDService.getAppdetails())
+    @GetMapping("/appDetails")
+    public ResponseDto<ArgoCDAppDetailsResponseVo> getManagedResource1(@RequestParam ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo) {
+        return ResponseDto.<ArgoCDAppDetailsResponseVo>builder()
+                .data(argoCDService.getAppdetails(argoCDAppDetailsRequestBodyVo))
                 .build();
     }
 

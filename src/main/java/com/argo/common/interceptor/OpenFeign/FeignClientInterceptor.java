@@ -32,7 +32,9 @@ public class FeignClientInterceptor implements RequestInterceptor {
 
     @Override
     public void apply(RequestTemplate requestTemplate) {
+        System.out.println(requestTemplate);
         log.info("================template URL :: " + requestTemplate.url());
+//        String substringToReplace = requestTemplate.url().substring(requestTemplate.url().indexOf("http"), requestTemplate.url().indexOf("/appdetails"));
 
         String requestUrl = requestTemplate.feignTarget().url();
 
@@ -47,7 +49,9 @@ public class FeignClientInterceptor implements RequestInterceptor {
 
             if (argoCDAuthDto != null)
                 System.out.println("argoCDAuthDto.getToken() = " + argoCDAuthDto.getToken());
-                requestTemplate.header(HttpHeaders.AUTHORIZATION, "Bearer " + argoCDAuthDto.getToken());
+            requestTemplate.header(HttpHeaders.AUTHORIZATION, "Bearer " + argoCDAuthDto.getToken());
+
+            System.out.println(requestTemplate.toString());
 
         }
 
