@@ -42,13 +42,13 @@ class ArgoCDServiceTest {
 
     @Test
     void getApplicationManagedResource() {
-        ArgoCdManagedResourceVo applicationResourceTree = argoCDService.getApplicationManagedResource("dev-plot-admin-api","Deployment");
+        ArgoCdManagedResourceVo applicationResourceTree = argoCDService.getApplicationManagedResource("dev-plot-admin-api","Deploy");
         System.out.println(applicationResourceTree);
     }
 
     @Test
     void getAppdetails() {
-        ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo = new ArgoCDAppDetailsRequestBodyVo(new ArgoCDAppDetailsRequestBodyVo.Source("https://github.com/leegyeongyoon/plotting-gitops.git", "dev/charts/plot-admin-api", "main"), "dev-plot-admin-api", "default");
+        ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo = new ArgoCDAppDetailsRequestBodyVo(new ArgoCDAppDetailsRequestBodyVo.Source("https://github.com/leegyeongyoon/plotting-gitops.git", "dev/charts/plot-admin-api", "main"), "dev-plot-admin-api", "default","deploy");
         ArgoCDAppDetailsResponseVo applicationResourceTree = argoCDService.getAppdetails(argoCDAppDetailsRequestBodyVo);
         System.out.println(applicationResourceTree);
     }

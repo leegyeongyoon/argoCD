@@ -50,7 +50,6 @@ public class ArgoCDService {
 
     public ArgoCdManagedResourceVo getApplicationManagedResource(String applicationName, String kind) {
         ArgoCdManagedResourceVo argoCDTreeNodeResponseVo = argoCDFeignClient.selectApplicationManagedResource(applicationName, kind);
-        System.out.println("argoCDTreeNodeResponseVo = " + argoCDTreeNodeResponseVo);
         return argoCDTreeNodeResponseVo;
     }
 
@@ -59,9 +58,9 @@ public class ArgoCDService {
         return ArgoCdApplicationVo.setApplicationVo(argoCdApplicationResponseVo);
     }
 
-//    public ArgoCdNodeDetailVo getNodeDetail(String applicationName, String kind) {
-//        return ArgoCdNodeDetailVo.setNodeDetailVo(this.getApplicationSummary(applicationName), this.getApplicationManagedResource(applicationName, kind), this.getAppdetails());
-//    }
+    public ArgoCdNodeDetailVo getNodeDetail(String applicationName, String kind, ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo) {
+        return ArgoCdNodeDetailVo.setNodeDetailVo(this.getApplicationSummary(applicationName), this.getApplicationManagedResource(applicationName, kind), this.getAppdetails(argoCDAppDetailsRequestBodyVo));
+    }
 
     public ArgoCDAppDetailsResponseVo getAppdetails(ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo) {
         String repoUrl = URLEncoder.encode(URLEncoder.encode(argoCDAppDetailsRequestBodyVo.getSource().getRepoURL(), StandardCharsets.UTF_8), StandardCharsets.UTF_8);

@@ -9,6 +9,7 @@ public class ArgoCDAppDetailsRequestBodyVo {
     private Source source;
     private String appName;
     private String appProject;
+    private String kind;
 
     @Getter
     @Setter

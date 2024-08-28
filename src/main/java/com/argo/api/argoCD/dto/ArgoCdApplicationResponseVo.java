@@ -206,9 +206,9 @@ public class ArgoCdApplicationResponseVo {
     @Getter
     @Setter
     public static class Spec {
+        private String project;
         private Source source;
         private Destination destination;
-        private String project;
         private SyncPolicy syncPolicy;
 
         @Getter

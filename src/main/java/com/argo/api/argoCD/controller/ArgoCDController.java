@@ -57,6 +57,7 @@ public class ArgoCDController {
                 .data(argoCDService.getApplicationManagedResource(serviceName, kind))
                 .build();
     }
+
     @CrossOrigin("*")
     @GetMapping("/appDetails")
     public ResponseDto<ArgoCDAppDetailsResponseVo> getManagedResource1(@RequestParam ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo) {
@@ -65,4 +66,11 @@ public class ArgoCDController {
                 .build();
     }
 
+    @CrossOrigin("*")
+    @GetMapping("/appDetails1")
+    public ResponseDto<ArgoCdNodeDetailVo> getNodeDetail(@RequestParam ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo) {
+        return ResponseDto.<ArgoCdNodeDetailVo>builder()
+                .data(argoCDService.getNodeDetail("test", "test", argoCDAppDetailsRequestBodyVo))
+                .build();
+    }
 }
