@@ -60,7 +60,7 @@ public class ArgoCDController {
 
     @CrossOrigin("*")
     @GetMapping("/appDetails")
-    public ResponseDto<ArgoCDAppDetailsResponseVo> getManagedResource1(@RequestParam ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo) {
+    public ResponseDto<ArgoCDAppDetailsResponseVo> getAppDetails(@RequestParam ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo) {
         return ResponseDto.<ArgoCDAppDetailsResponseVo>builder()
                 .data(argoCDService.getAppdetails(argoCDAppDetailsRequestBodyVo))
                 .build();
