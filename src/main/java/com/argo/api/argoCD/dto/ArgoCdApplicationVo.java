@@ -45,7 +45,7 @@ public class ArgoCdApplicationVo {
                 .createdAt(metadata.getCreationTimestamp())
                 .lastSyncAt(status.getReconciledAt())
                 .cluster(spec.getDestination().getServer())
-                .images(status.getSummary().getImages().get(0))
+                .images(Objects.nonNull(status.getSummary().getImages()) ? status.getSummary().getImages().getFirst(): "")
                 .build();
     }
 
