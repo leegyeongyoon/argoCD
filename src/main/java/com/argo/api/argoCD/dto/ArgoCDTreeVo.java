@@ -55,6 +55,7 @@ public class ArgoCDTreeVo {
         List<String> rootNodeUidList = new ArrayList<>();
 
         Map<String, ArgoCDTreeVo> argoCDTreeMap = nodeList.stream()
+                .filter(node -> Objects.nonNull(node.getUid()))
                 .collect(Collectors.toMap(ArgoCDTreeNodeResponseVo.Node::getUid, ArgoCDTreeVo::createNode));
 
         nodeList.forEach(node -> {
