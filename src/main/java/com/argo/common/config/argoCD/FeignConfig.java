@@ -1,6 +1,7 @@
 package com.argo.common.config.argoCD;
 
 import feign.Logger;
+import feign.codec.ErrorDecoder;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
@@ -61,5 +62,9 @@ public class FeignConfig {
         return new RestTemplate(factory);
     }
 
+//    @Bean
+//    public ErrorDecoder errorDecoder() {
+//        return new FeignErrorDecoder();
+//    }
 
 }
