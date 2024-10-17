@@ -62,9 +62,9 @@ public class FeignConfig {
         return new RestTemplate(factory);
     }
 
-//    @Bean
-//    public ErrorDecoder errorDecoder() {
-//        return new FeignErrorDecoder();
-//    }
+    @Bean
+    public ErrorDecoder errorDecoder() {
+        return new FeignErrorDecoder();
+    }
 
 }
