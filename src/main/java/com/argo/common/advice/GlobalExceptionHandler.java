@@ -16,6 +16,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ExceptionResponseVo handleException(Exception exception) {
         log.error(exception.getMessage());
+        exception.printStackTrace();
         return new ExceptionResponseVo(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
     }
 }

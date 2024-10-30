@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Builder
-public record ResponseDto<T>(String mesage, T data) {
+public record ResponseDto<T>(String message, T data) {
 
     @JsonProperty
     public String dataType() {

@@ -38,7 +38,6 @@ public class ArgoCDService {
 
     public ArgoCdApplicationResponseVo getApplication(String applicationName) {
         ArgoCdApplicationResponseVo argoCdApplicationResponseVo = argoCDFeignClient.selectApplication(applicationName);
-        System.out.println(argoCdApplicationResponseVo);
         return argoCdApplicationResponseVo;
     }
 

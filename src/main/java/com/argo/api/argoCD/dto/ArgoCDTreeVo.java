@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class ArgoCDTreeVo {
     private String name;
     private ArgoCDNode value;
@@ -58,6 +59,9 @@ public class ArgoCDTreeVo {
                 .filter(node -> Objects.nonNull(node.getUid()))
                 .collect(Collectors.toMap(ArgoCDTreeNodeResponseVo.Node::getUid, ArgoCDTreeVo::createNode));
 
+        if (argoCDTreeMap.isEmpty()) {
+            return null;
+        }
         nodeList.forEach(node -> {
             ArgoCDTreeVo treeNode = argoCDTreeMap.get(node.getUid());
 
