@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.util.List;
-import java.util.Map;
 
 @SpringBootTest
 class ArgoCDServiceTest {
@@ -55,5 +52,15 @@ class ArgoCDServiceTest {
                 "dev-plot-admin-api", "default","");
         ArgoCDAppDetailsResponseVo applicationResourceTree = argoCDService.getAppdetails(argoCDAppDetailsRequestBodyVo);
         System.out.println(applicationResourceTree);
+    }
+
+    @Test
+    void getEvents(){
+        ArgoCDEventResponseVo eventList = argoCDService.getEventList("baton-ao-collector-dev", ArgoCDEventRequestBodyVo.builder()
+                .resourceUID("e4194d1d-905d-4174-a930-38003200c727")
+                .resourceNamespace("vista")
+                .resourceName("baton-ao-collector-7ccc6cbf5b")
+                .appNamespace("argo").build());
+        System.out.println(eventList);
     }
 }

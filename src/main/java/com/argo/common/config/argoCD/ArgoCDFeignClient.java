@@ -34,4 +34,6 @@ public interface ArgoCDFeignClient {
     @PostMapping(value = "/api/v1/repositories/{repoURL:.+}/appdetails", produces = MediaType.APPLICATION_JSON_VALUE)
     ArgoCDAppDetailsResponseVo selectApplicationRepository(@PathVariable String repoURL, @RequestBody ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo);
 
+    @GetMapping(value = "/api/v1/applications/{applicationName}/events", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    ArgoCDEventResponseVo selectEventList(@PathVariable String applicationName, @RequestParam ArgoCDEventRequestBodyVo argoCDEventRequestBodyVo);
 }

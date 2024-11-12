@@ -60,7 +60,7 @@ public class ArgoCDTreeVo {
                 .collect(Collectors.toMap(ArgoCDTreeNodeResponseVo.Node::getUid, ArgoCDTreeVo::createNode));
 
         if (argoCDTreeMap.isEmpty()) {
-            return null;
+            return List.of(new ArgoCDTreeVo());
         }
         nodeList.forEach(node -> {
             ArgoCDTreeVo treeNode = argoCDTreeMap.get(node.getUid());

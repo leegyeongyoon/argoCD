@@ -61,6 +61,12 @@ public class ArgoCDService {
         return ArgoCdNodeDetailVo.setNodeDetailVo(this.getApplicationSummary(applicationName), this.getApplicationManagedResource(applicationName, kind), this.getAppdetails(argoCDAppDetailsRequestBodyVo));
     }
 
+    public ArgoCDEventResponseVo getEventList(String applicationName, ArgoCDEventRequestBodyVo argoCDEventRequestBodyVo) {
+        ArgoCDEventResponseVo eventList = argoCDFeignClient.selectEventList(applicationName, argoCDEventRequestBodyVo);
+        System.out.println(eventList);
+        return eventList;
+    }
+
     public ArgoCDAppDetailsResponseVo getAppdetails(ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo) {
         String repoUrl = URLEncoder.encode(URLEncoder.encode(argoCDAppDetailsRequestBodyVo.getSource().getRepoURL(), StandardCharsets.UTF_8), StandardCharsets.UTF_8);
         return argoCDFeignClient.selectApplicationRepository(repoUrl, argoCDAppDetailsRequestBodyVo);
