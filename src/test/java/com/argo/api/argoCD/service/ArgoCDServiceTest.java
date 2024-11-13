@@ -56,9 +56,9 @@ class ArgoCDServiceTest {
 
     @Test
     void getEvents(){
-        ArgoCDEventResponseVo eventList = argoCDService.getEventList("baton-ao-collector-dev", ArgoCDEventRequestBodyVo.builder()
+        ArgoCDEventResponseVo eventList = argoCDService.getEvents("baton-ao-collector-dev", ArgoCDEventRequestBodyVo.builder()
                 .resourceUID("e4194d1d-905d-4174-a930-38003200c727")
-                .resourceNamespace("vista")
+                .resourceNamespace("")
                 .resourceName("baton-ao-collector-7ccc6cbf5b")
                 .appNamespace("argo").build());
         System.out.println(eventList);

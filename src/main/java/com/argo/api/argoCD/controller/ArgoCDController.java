@@ -73,4 +73,12 @@ public class ArgoCDController {
                 .data(argoCDService.getNodeDetail("test", "test", argoCDAppDetailsRequestBodyVo))
                 .build();
     }
+
+    @CrossOrigin("*")
+    @GetMapping("/nodeEvents")
+    public ResponseDto<ArgoCDEventResponseVo> getNodeEvents(@PathVariable String applicationName, @RequestParam ArgoCDEventRequestBodyVo argoCDEventRequestBodyVo) {
+        return ResponseDto.<ArgoCDEventResponseVo>builder()
+                .data(argoCDService.getEvents(applicationName, argoCDEventRequestBodyVo))
+                .build();
+    }
 }

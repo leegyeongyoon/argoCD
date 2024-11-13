@@ -61,7 +61,7 @@ public class ArgoCDService {
         return ArgoCdNodeDetailVo.setNodeDetailVo(this.getApplicationSummary(applicationName), this.getApplicationManagedResource(applicationName, kind), this.getAppdetails(argoCDAppDetailsRequestBodyVo));
     }
 
-    public ArgoCDEventResponseVo getEventList(String applicationName, ArgoCDEventRequestBodyVo argoCDEventRequestBodyVo) {
+    public ArgoCDEventResponseVo getEvents(String applicationName, ArgoCDEventRequestBodyVo argoCDEventRequestBodyVo) {
         ArgoCDEventResponseVo eventList = argoCDFeignClient.selectEventList(applicationName, argoCDEventRequestBodyVo);
         System.out.println(eventList);
         return eventList;
