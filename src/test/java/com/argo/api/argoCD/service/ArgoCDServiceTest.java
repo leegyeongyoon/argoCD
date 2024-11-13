@@ -26,14 +26,14 @@ class ArgoCDServiceTest {
 
     @Test
     void getApplication() {
-        ArgoCdApplicationResponseVo reposotiryList = argoCDService.getApplication("dev-plot-admin-api");
+        ArgoCdApplicationResponseVo reposotiryList = argoCDService.getApplication("baton-ao-collector-dev");
         System.out.println(reposotiryList);
     }
 
 
     @Test
     void getApplicationResourceTree() {
-        List<ArgoCDTreeVo> applicationResourceTree = argoCDService.getApplicationResourceTree("nginx");
+        List<ArgoCDTreeVo> applicationResourceTree = argoCDService.getApplicationResourceTree("baton-ao-collector-dev");
         System.out.println(applicationResourceTree);
     }
 

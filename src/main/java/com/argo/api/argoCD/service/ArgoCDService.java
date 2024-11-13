@@ -44,7 +44,9 @@ public class ArgoCDService {
 
     public List<ArgoCDTreeVo> getApplicationResourceTree(String applicationName) {
         ArgoCDTreeNodeResponseVo argoCDTreeNodeResponseVo = argoCDFeignClient.selectApplicationResourceTree(applicationName);
-        return ArgoCDTreeVo.createTree(argoCDTreeNodeResponseVo);
+        ArgoCDTreeNodeResponseVo argoCDTreeNodeResponseVo1 = argoCDFeignClient.selectApplicationResourceTree(applicationName);
+        System.out.println("argoCDTreeNodeResponseVo1 = " + argoCDTreeNodeResponseVo1);
+        return List.of(new ArgoCDTreeVo());
     }
 
     public ArgoCdManagedResourceVo getApplicationManagedResource(String applicationName, String kind) {
@@ -69,7 +71,9 @@ public class ArgoCDService {
 
     public ArgoCDAppDetailsResponseVo getAppdetails(ArgoCDAppDetailsRequestBodyVo argoCDAppDetailsRequestBodyVo) {
         String repoUrl = URLEncoder.encode(URLEncoder.encode(argoCDAppDetailsRequestBodyVo.getSource().getRepoURL(), StandardCharsets.UTF_8), StandardCharsets.UTF_8);
-        return argoCDFeignClient.selectApplicationRepository(repoUrl, argoCDAppDetailsRequestBodyVo);
+        ArgoCDAppDetailsResponseVo argoCDAppDetailsResponseVo = argoCDFeignClient.selectApplicationRepository(repoUrl, argoCDAppDetailsRequestBodyVo);
+        System.out.println("argoCDAppDetailsResponseVo = " + argoCDAppDetailsResponseVo);
+        return argoCDAppDetailsResponseVo;
     }
 
 }
