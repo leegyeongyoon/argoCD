@@ -25,6 +25,7 @@ public class ArgoCDTreeVo {
     @Builder
     public static class ArgoCDNode {
         private String status;
+        private String message;
         private String name;
         private String kind;
         private String revision;
@@ -33,6 +34,7 @@ public class ArgoCDTreeVo {
     private static ArgoCDTreeVo createNode(ArgoCDTreeNodeResponseVo.Node node) {
         ArgoCDNode argoCDTreeNodeValue = ArgoCDNode.builder()
                 .status(Objects.nonNull(node.getHealth()) ? node.getHealth().getStatus() : "")
+                .message(Objects.nonNull(node.getHealth()) ? node.getHealth().getMessage() : "")
                 .kind(node.getKind())
                 .name(node.getName())
                 .revision(getRevisionValue(node)).build();
